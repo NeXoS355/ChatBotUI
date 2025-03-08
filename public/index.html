@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat-Bot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chat-Bot</h1>
+            <select id="modelSelector"></select>
+            <select id="modeSelector">
+                <option value="short">kurz</option>
+                <option selected="selected" value="long">lang</option>
+            </select>
+        </header>
+        <div id="chatContainer">
+            <div id="chatMessages"></div>
+        </div>
+        <div id="inputContainer">
+            <textarea id="userInput" placeholder="Enter your message..."></textarea>
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+<!--<link rel="stylesheet" href="src/default.min.css"> -->
+    <script src="src/marked.min.js"></script>
+    <script src="src/highlight.min.js"></script>
+    <script src="src/purify.min.js"></script>
+
+</body>
+</html>
