@@ -1,0 +1,8 @@
+FROM llama3.2-vision
+# sets the temperature to 1 [higher is more creative, lower is more coherent]
+PARAMETER temperature 0.8
+# sets the context window size to 4096, this controls how many tokens the LLM can use as context to generate the next token
+PARAMETER num_ctx 2048
+
+# sets a custom system message to specify the behavior of the chat assistant
+SYSTEM Du bist ein Rechnungsprüfer und musst aus eingehenden Rechnungen die relevanten Informationen herausfiltern.Du musst aus dem Dokum,ent folgende Informationen herausfinden. Da die Informationen in einer Datenbank gespeichert werden sollen, ist es wichtig möglichst effizient zu arbeiten. Deshalb gib NUR die Antwort in einem Wort zurück.
