@@ -10,14 +10,41 @@ class MyEventHandler(FileSystemEventHandler):
         print(event.event_type)
         if(event.event_type == "created" and str(event.src_path).endswith(".png")):
             response = ollama.chat(
-                model='llama3.2-vision',
+                model='llama3.2-custom',
                 messages=[{
                     'role': 'user',
-                    'content': 'Das Dokument ist eine Rechnung die wir bezahlen müssen. Wie lautet die Rechnungsnummer, das Rechnungsdatum, der Lieferant in Kurzform,zu zahlende Preis? Die Antwort wird in eine Datenbank gespeichert, deshalb gib bitte nur die Antwort nur mit dem Zeichen | getrennt zurück ohne Beschreibung oder Formatierung',
+                    'content': 'Wie lautet die Rechnungsnummer?',
                     'images': [event.src_path]
                 }]
             )
-            print(response.message.content)
+            print('Rech-Nr.: ' +  response.message.content)
+            response = ollama.chat(
+                model='llama3.2-custom',
+                messages=[{
+                    'role': 'user',
+                    'content': 'Wann wurde die Rechnung ausgestellt?',
+                    'images': [event.src_path]
+                }]
+            )
+            print('Rechnunsdatum.: ' +  response.message.content)
+            response = ollama.chat(
+                model='llama3.2-custom',
+                messages=[{
+                    'role': 'user',
+                    'content': 'Von welcher Firma kommt die Rechnung?',
+                    'images': [event.src_path]
+                }]
+            )
+            print('Lieferant: ' +  response.message.content)
+            response = ollama.chat(
+                model='llama3.2-custom',
+                messages=[{
+                    'role': 'user',
+                    'content': 'Wie hoch ist der zu zahlende Gesamtpreis der Rechnung?',
+                    'images': [event.src_path]
+                }]
+            )
+            print('Preis: ' +  response.message.content)
 
 
 
